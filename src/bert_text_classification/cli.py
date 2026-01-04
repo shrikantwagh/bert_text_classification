@@ -14,6 +14,24 @@ This provides subcommands:
 
 from __future__ import annotations
 
+import warnings
+
+import warnings
+
+# Google Cloud Python version support warning
+warnings.filterwarnings(
+    "ignore",
+    category=FutureWarning,
+    module=r"google\.api_core\._python_version_support",
+)
+
+# tensorflow_hub / pkg_resources deprecation warning
+warnings.filterwarnings(
+    "ignore",
+    message=r".*pkg_resources is deprecated as an API.*",
+    category=UserWarning,
+)
+
 import argparse
 from pathlib import Path
 from typing import List, Optional
