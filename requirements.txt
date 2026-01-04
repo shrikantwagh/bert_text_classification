@@ -1,7 +1,12 @@
-tensorflow==2.12.*
-tensorflow-hub==0.15.*
-tensorflow-text==2.12.*
-tf-models-official==2.12.*
+tensorflow==2.16.2
+tensorflow-hub==0.16.1
+tensorflow-text==2.16.1
+tf-models-official==2.16.0
+
+keras<3
+tf-keras==2.16.0
+
 matplotlib>=3.7
 google-cloud-aiplatform>=1.38
 google-cloud-storage>=2.10
+setuptools<81

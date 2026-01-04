@@ -75,7 +75,21 @@ class ImdbDataModule:
 
         # The unpacked dataset directory is placed alongside the archive.
         # Example: <data_dir>/aclImdb
-        dataset_dir = Path(os.path.dirname(archive_path)) / "aclImdb"
+        #dataset_dir = Path(os.path.dirname(archive_path)) / "aclImdb"
+
+        root_dir = Path(archive_path).parent
+
+        # Handle both possible layouts:
+        # 1) data/aclImdb
+        # 2) data/aclImdb_v1_extracted/aclImdb
+        if (root_dir / "aclImdb").exists():
+            dataset_dir = root_dir / "aclImdb"
+        elif (root_dir / "aclImdb_v1_extracted" / "aclImdb").exists():
+            dataset_dir = root_dir / "aclImdb_v1_extracted" / "aclImdb"
+        else:
+            raise FileNotFoundError(
+                f"Could not locate aclImdb dataset under {root_dir}"
+            )
 
         # Remove the "unsup" directory.
         remove_dir = dataset_dir / "train" / "unsup"

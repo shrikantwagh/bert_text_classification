@@ -18,6 +18,9 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
+pip install -e .
+
+
 ### Train + export
 This will download IMDB to `./data/aclImdb`, train, and export a SavedModel under `./exports/imdb_bert/<timestamp>/`:
 ```bash
